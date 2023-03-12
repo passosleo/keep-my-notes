@@ -1,13 +1,15 @@
-export interface IProps {
+export interface IProps extends IStyledProps {
   title?: string;
   type?: "button" | "submit" | "reset";
-  onClick: () => void;
+  onClick: (() => void) | undefined;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
-  disabled?: boolean;
-  color?: "solid" | "outline";
+}
+
+export interface IStyledProps {
   width?: string;
   height?: string;
   fontSize?: string;
-  transition?: boolean;
+  disabled?: boolean;
+  variant?: "solid" | "outline";
 }

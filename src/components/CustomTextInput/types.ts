@@ -1,19 +1,31 @@
 export interface IProps extends IStyledProps {
+  value?: string;
   label?: string;
   type?: "text" | "textarea";
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
   placeholder?: string;
   required?: boolean;
   maxLength?: number;
   minLength?: number;
-  pattern?: string;
   autoFocus?: boolean;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (
+    event:
+      | React.FocusEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
+  onFocus?: (
+    event:
+      | React.FocusEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
 }
 
 export interface IStyledProps {
   width?: string;
-  height?: string;
+  size?: "small" | "medium" | "large";
   disabled?: boolean;
 }

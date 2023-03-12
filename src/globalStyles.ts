@@ -4,11 +4,12 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   body {
     font-family: ${({ theme }) => theme.fonts.primary}, Sans-Serif;
-    color: #222222;
+    color: ${({ theme }) => theme.colors.black};
   }
 
   h1,h2,h3,h4,h5,h6 {

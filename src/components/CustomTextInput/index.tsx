@@ -1,7 +1,8 @@
 import { InputWrapper } from "./styles";
 import { IProps } from "./types";
 
-function CustomTextInput({
+export default function CustomTextInput({
+  value,
   label,
   type = "text",
   onChange,
@@ -10,36 +11,47 @@ function CustomTextInput({
   required,
   maxLength,
   minLength,
-  pattern,
   autoFocus,
   onBlur,
   onFocus,
   width,
-  height,
+  size = "medium",
 }: IProps) {
   return (
-    <InputWrapper width={width} height={height}>
-      {label && <label htmlFor={label}>{label}</label>}
+    <InputWrapper width={width} size={size}>
+      {label && <label htmlFor={label}>{required ? `${label}*` : label}</label>}
       {type === "textarea" ? (
-        <textarea id={label} placeholder={placeholder} />
+        <textarea
+          id={label}
+          placeholder={placeholder}
+          aria-label={label}
+          onChange={onChange}
+          disabled={disabled}
+          maxLength={maxLength}
+          minLength={minLength}
+          autoFocus={autoFocus}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          value={value}
+          required={required}
+        />
       ) : (
         <input
           id={label}
           type={type}
+          placeholder={placeholder}
+          aria-label={label}
           onChange={onChange}
           disabled={disabled}
           required={required}
           maxLength={maxLength}
           minLength={minLength}
-          pattern={pattern}
           autoFocus={autoFocus}
           onBlur={onBlur}
           onFocus={onFocus}
-          placeholder={placeholder}
+          value={value}
         />
       )}
     </InputWrapper>
   );
 }
-
-export default CustomTextInput;

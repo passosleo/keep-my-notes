@@ -1,34 +1,31 @@
-import { Button } from "./styles";
+import { ButtonWrapper } from "./styles";
 import { IProps } from "./types";
 
-function CustomButton({
+export default function CustomButton({
   title,
   type = "button",
   onClick,
   leftIcon,
   rightIcon,
   disabled = false,
-  color = "solid",
+  variant = "solid",
   width,
   height,
   fontSize,
 }: IProps) {
   return (
-    <Button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      color={color}
+    <ButtonWrapper
       width={width}
       height={height}
-      title=""
+      variant={variant}
       fontSize={fontSize}
+      disabled={disabled}
     >
-      {leftIcon && <span>{leftIcon}</span>}
-      {title && <p>{title}</p>}
-      {rightIcon && <span>{rightIcon}</span>}
-    </Button>
+      <button type={type} onClick={onClick} disabled={disabled}>
+        {leftIcon && <span>{leftIcon}</span>}
+        {title && <p>{title}</p>}
+        {rightIcon && <span>{rightIcon}</span>}
+      </button>
+    </ButtonWrapper>
   );
 }
-
-export default CustomButton;

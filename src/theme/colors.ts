@@ -3,7 +3,7 @@ interface ThemeColors {
   red: "#890F0D";
   white: "#ffffff";
   black: "#222222";
-  grey: "#f2f2f2";
+  grey: "#999999";
 }
 
 export const colors: ThemeColors = {
@@ -11,5 +11,5 @@ export const colors: ThemeColors = {
   red: "#890F0D",
   white: "#ffffff",
   black: "#222222",
-  grey: "#f2f2f2",
+  grey: "#999999",
 };
