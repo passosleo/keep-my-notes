@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 export default function useNotes() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -6,10 +7,14 @@ export default function useNotes() {
     title: "",
     description: "",
   });
+  const { storeValue, getStoredValue, clearStorage } = useLocalStorage();
+  const notes = getStoredValue("notes");
 
   function handleAddNote(e: any) {
     e.preventDefault();
     console.log(newNote);
+    const previousNotes = getStoredValue("notes");
+    storeValue("notes", [...previousNotes, newNote]);
     setIsModalOpen(false);
     setNewNote({
       title: "",
@@ -23,5 +28,6 @@ export default function useNotes() {
     newNote,
     setNewNote,
     handleAddNote,
+    notes,
   };
 }

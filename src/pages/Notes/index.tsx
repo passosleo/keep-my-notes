@@ -4,10 +4,17 @@ import { Wrapper } from "./styles";
 import { FiPlusCircle } from "react-icons/fi";
 import CustomModal from "../../components/CustomModal";
 import useNotes from "./hooks/useNotes";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 export default function Notes() {
-  const { handleAddNote, isModalOpen, setIsModalOpen, newNote, setNewNote } =
-    useNotes();
+  const {
+    handleAddNote,
+    isModalOpen,
+    setIsModalOpen,
+    newNote,
+    setNewNote,
+    notes,
+  } = useNotes();
   return (
     <>
       <Wrapper>
@@ -21,6 +28,15 @@ export default function Notes() {
           height="3rem"
         />
       </Wrapper>
+
+      {notes?.map((note: any, index: number) => {
+        return (
+          <div key={index}>
+            <h1>{note.title}</h1>
+            <p>{note.description}</p>
+          </div>
+        );
+      })}
 
       <form onSubmit={(e) => handleAddNote(e)}>
         <CustomModal
