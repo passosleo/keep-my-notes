@@ -1,4 +1,4 @@
-import { Header } from "../styles";
+import { Header } from "../../styles";
 
 function NavBar() {
   return (

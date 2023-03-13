@@ -1,19 +1,21 @@
 import CustomButton from "../../components/CustomButton";
-import CustomTextInput from "../../components/CustomTextInput";
 import { Wrapper } from "./styles";
 import { FiPlusCircle } from "react-icons/fi";
-import CustomModal from "../../components/CustomModal";
 import useNotes from "./hooks/useNotes";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import NotesModal from "./components/Modal";
+import { Note } from "../../types";
+import NoteCard from "./components/Card";
 
 export default function Notes() {
   const {
-    handleAddNote,
-    isModalOpen,
-    setIsModalOpen,
-    newNote,
-    setNewNote,
     notes,
+    handleModalOpen,
+    handleSaveNote,
+    handleNoteForm,
+    isModalOpen,
+    currentNote,
+    handleEditNote,
+    handleDeleteNote,
   } = useNotes();
   return (
     <>
@@ -21,7 +23,7 @@ export default function Notes() {
         <CustomButton
           variant="solid"
           title="Adicionar nota"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => handleModalOpen()}
           disabled={false}
           rightIcon={<FiPlusCircle size={20} />}
           width="13rem"
@@ -29,47 +31,24 @@ export default function Notes() {
         />
       </Wrapper>
 
-      {notes?.map((note: any, index: number) => {
+      {notes?.map((note: Note) => {
         return (
-          <div key={index}>
-            <h1>{note.title}</h1>
-            <p>{note.description}</p>
-          </div>
+          <NoteCard
+            note={note}
+            key={note.id}
+            handleEditNote={handleEditNote}
+            handleDeleteNote={handleDeleteNote}
+          />
         );
       })}
 
-      <form onSubmit={(e) => handleAddNote(e)}>
-        <CustomModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          footer={true}
-          title="Adicionar nota"
-          closable={true}
-        >
-          <CustomTextInput
-            label="Título"
-            placeholder="Insira um título"
-            onChange={({ target }) =>
-              setNewNote({ ...newNote, title: target.value })
-            }
-            maxLength={25}
-            width="280px"
-            required
-            value={newNote.title}
-          />
-          <CustomTextInput
-            label="Descrição"
-            type="textarea"
-            placeholder="Insira uma descrição"
-            onChange={({ target }) =>
-              setNewNote({ ...newNote, description: target.value })
-            }
-            size="medium"
-            width="280px"
-            value={newNote.description}
-          />
-        </CustomModal>
-      </form>
+      <NotesModal
+        handleSaveNote={handleSaveNote}
+        handleNoteForm={handleNoteForm}
+        handleModalOpen={handleModalOpen}
+        isModalOpen={isModalOpen}
+        currentNote={currentNote}
+      />
     </>
   );
 }

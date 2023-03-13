@@ -1,5 +1,5 @@
-import Footer from "./Footer";
-import NavBar from "./NavBar";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import { ContentWrapper } from "./styles";
 import { IProps } from "./types";
 

@@ -1,5 +1,5 @@
 export default function useLocalStorage() {
-  function storeValue(key: string, value: string | object | any) {
+  function storeValue(key: string, value: any) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
@@ -7,10 +7,10 @@ export default function useLocalStorage() {
     }
   }
 
-  function getStoredValue(key: string) {
+  function getStoredValue(key: string, defaultValue: any = null) {
     try {
       const item = localStorage.getItem(key);
-      if (!item) throw new Error("No item found");
+      if (!item) return defaultValue;
       return JSON.parse(item);
     } catch (error) {
       console.error(error);

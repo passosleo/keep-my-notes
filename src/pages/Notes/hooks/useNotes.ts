@@ -1,33 +1,76 @@
-import { useState, useEffect } from "react";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { Note } from "./../../../types/index";
+import { useState } from "react";
+import useNotesService from "../../../services/notes";
 
 export default function useNotes() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const [newNote, setNewNote] = useState({
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentNote, setCurrentNote] = useState<Note>({
+    id: "",
     title: "",
     description: "",
   });
-  const { storeValue, getStoredValue, clearStorage } = useLocalStorage();
-  const notes = getStoredValue("notes");
 
-  function handleAddNote(e: any) {
+  const { saveNote, updateNoteById, deleteNoteById, getNoteById, getNotes } =
+    useNotesService();
+
+  const [notes, setNotes] = useState<Note[]>(getNotes());
+
+  function refreshNotes() {
+    setNotes(getNotes());
+  }
+
+  function handleModalOpen() {
+    setIsModalOpen(!isModalOpen);
+    if (isModalOpen) {
+      clearForm();
+    }
+  }
+
+  function handleNoteForm({ target }: any, field: string) {
+    const { value } = target;
+    setCurrentNote({
+      ...currentNote,
+      [field]: value,
+    });
+  }
+
+  function handleSaveNote(e: any) {
     e.preventDefault();
-    console.log(newNote);
-    const previousNotes = getStoredValue("notes");
-    storeValue("notes", [...previousNotes, newNote]);
-    setIsModalOpen(false);
-    setNewNote({
+    if (currentNote.id) {
+      updateNoteById(currentNote.id, currentNote);
+    } else {
+      saveNote(currentNote);
+    }
+    handleModalOpen();
+    refreshNotes();
+  }
+
+  function handleEditNote(id: string) {
+    setCurrentNote(getNoteById(id));
+    handleModalOpen();
+  }
+
+  function handleDeleteNote(id: string) {
+    deleteNoteById(id);
+    refreshNotes();
+  }
+
+  function clearForm() {
+    setCurrentNote({
+      id: "",
       title: "",
       description: "",
     });
   }
 
   return {
-    setIsModalOpen,
     isModalOpen,
-    newNote,
-    setNewNote,
-    handleAddNote,
+    handleNoteForm,
+    handleSaveNote,
     notes,
+    handleModalOpen,
+    currentNote,
+    handleEditNote,
+    handleDeleteNote,
   };
 }
