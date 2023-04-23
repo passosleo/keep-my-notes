@@ -2,7 +2,7 @@ import CustomModal from "../../../../components/CustomModal";
 import CustomTextInput from "../../../../components/CustomTextInput";
 import { INotesModalProps } from "../../types";
 
-export default function NotesModal({
+export default function NoteModal({
   handleSaveNote,
   handleNoteForm,
   handleModalOpen,
@@ -15,7 +15,7 @@ export default function NotesModal({
         isOpen={isModalOpen}
         onClose={() => handleModalOpen()}
         footer={true}
-        title="Adicionar nota"
+        title={currentNote.id ? "Editar nota" : "Adicionar nota"}
         closable={true}
       >
         <CustomTextInput

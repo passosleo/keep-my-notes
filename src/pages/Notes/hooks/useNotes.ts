@@ -1,19 +1,30 @@
 import { Note } from "./../../../types/index";
 import { useState } from "react";
 import useNotesService from "../../../services/notes";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 export default function useNotes() {
+  const { storeValue, getStoredValue } = useLocalStorage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentNote, setCurrentNote] = useState<Note>({
     id: "",
     title: "",
     description: "",
   });
+  const [viewMode, setViewMode] = useState<number>(
+    getStoredValue("viewMode") || 4
+  );
 
   const { saveNote, updateNoteById, deleteNoteById, getNoteById, getNotes } =
     useNotesService();
 
   const [notes, setNotes] = useState<Note[]>(getNotes());
+
+  function handleViewMode() {
+    const current = viewMode === 4 ? 1 : viewMode + 1;
+    storeValue("viewMode", current);
+    setViewMode(current);
+  }
 
   function refreshNotes() {
     setNotes(getNotes());
@@ -72,5 +83,7 @@ export default function useNotes() {
     currentNote,
     handleEditNote,
     handleDeleteNote,
+    handleViewMode,
+    viewMode,
   };
 }

@@ -1,4 +1,4 @@
-import { Note } from "./../../types/index";
+import { Note } from "./../../types";
 
 export interface INotesModalProps {
   isModalOpen: boolean;
@@ -12,4 +12,8 @@ export interface INoteCardProps {
   note: Note;
   handleEditNote: (id: string) => void;
   handleDeleteNote: (id: string) => void;
+}
+
+export interface IStyledProps {
+  viewMode?: number;
 }

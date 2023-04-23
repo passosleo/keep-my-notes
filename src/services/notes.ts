@@ -1,4 +1,4 @@
-import { Note } from "./../types/index";
+import { Note } from "../types";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { v4 as uuidv4 } from "uuid";
 
