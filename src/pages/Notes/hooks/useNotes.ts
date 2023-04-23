@@ -10,6 +10,7 @@ export default function useNotes() {
     id: "",
     title: "",
     description: "",
+    color: "",
   });
   const [viewMode, setViewMode] = useState<number>(
     getStoredValue("viewMode") || 4

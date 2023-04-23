@@ -16,4 +16,5 @@ export interface INoteCardProps {
 
 export interface IStyledProps {
   viewMode?: number;
+  noteColor?: string;
 }

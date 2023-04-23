@@ -7,9 +7,9 @@ export default function NoteCard({
   handleEditNote,
   handleDeleteNote,
 }: INoteCardProps) {
-  const { id, title, description } = note;
+  const { id, title, description, color } = note;
   return (
-    <NoteCardWrapper>
+    <NoteCardWrapper noteColor={color}>
       <div>
         <h1>{title}</h1>
         <div>
