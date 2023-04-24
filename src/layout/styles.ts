@@ -10,7 +10,7 @@ export const Header = styled.section`
   align-items: center;
   justify-content: center;
 
-  div {
+  div:first-child {
     max-width: 1200px;
     width: 100%;
     display: flex;
@@ -18,6 +18,7 @@ export const Header = styled.section`
     justify-content: space-between;
 
     img {
+      cursor: pointer;
       border-radius: 50%;
       border: 2px solid #f2f2f2;
       background: #f2f2f2;
@@ -30,4 +31,30 @@ export const ContentWrapper = styled.section`
   margin: 0 auto;
   padding: 2em 0.8em;
   height: calc(100vh - 80px);
+`;
+
+export const DropdownWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+
+  div {
+    display: none;
+    position: absolute;
+    color: ${({ theme }) => theme.colors.grey};
+    background-color: ${({ theme }) => theme.colors.white};
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    cursor: pointer;
+    transition: 100ms;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.blue};
+    }
+  }
+
+  &:hover div {
+    display: block;
+  }
 `;

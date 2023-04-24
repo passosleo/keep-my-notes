@@ -1,8 +1,8 @@
-import { Note } from "./../../../types/index";
 import { useState } from "react";
 import useNotesService from "../../../services/notes";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { NoteColors } from "../../../static";
+import { Note } from "../../../@types";
 
 export default function useNotes() {
   const { storeValue, getStoredValue } = useLocalStorage();
