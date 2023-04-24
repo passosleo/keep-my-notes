@@ -41,13 +41,13 @@ export default function CustomModal({
             <ModalFooter>
               {closable && (
                 <CustomButton
-                  title="Cancelar"
+                  title="Cancel"
                   variant="outline"
                   onClick={onClose}
                 />
               )}
               <CustomButton
-                title="Salvar"
+                title="Save"
                 variant="solid"
                 type="submit"
                 onClick={onConfirm}

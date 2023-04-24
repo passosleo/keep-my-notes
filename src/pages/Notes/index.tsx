@@ -5,10 +5,12 @@ import useNotes from "./hooks/useNotes";
 import NoteModal from "./components/Modal";
 import { Note } from "../../types";
 import NoteCard from "./components/Card";
+import Empty from "../../components/Empty";
+import { theme } from "../../theme";
+import { BsInbox } from "react-icons/bs";
 
 export default function Notes() {
   const {
-    notes,
     handleModalOpen,
     handleSaveNote,
     handleNoteForm,
@@ -22,7 +24,6 @@ export default function Notes() {
     setSearch,
     filteredNotes,
   } = useNotes();
-
   return (
     <>
       <ActionsWrapper>
@@ -48,18 +49,26 @@ export default function Notes() {
         />
       </ActionsWrapper>
 
-      <NoteListWrapper viewMode={viewMode}>
-        {(filteredNotes ?? notes)?.map((note: Note) => {
-          return (
-            <NoteCard
-              note={note}
-              key={note.id}
-              handleEditNote={handleEditNote}
-              handleDeleteNote={handleDeleteNote}
-            />
-          );
-        })}
-      </NoteListWrapper>
+      {filteredNotes.length === 0 ? (
+        <Empty
+          defaultMessage="No notes yet"
+          icon={<BsInbox size={80} color={theme.colors.lightGrey} />}
+          extra={search ? `No notes found for "${search}"` : ""}
+        />
+      ) : (
+        <NoteListWrapper viewMode={viewMode}>
+          {filteredNotes.map((note: Note) => {
+            return (
+              <NoteCard
+                note={note}
+                key={note.id}
+                handleEditNote={handleEditNote}
+                handleDeleteNote={handleDeleteNote}
+              />
+            );
+          })}
+        </NoteListWrapper>
+      )}
 
       <NoteModal
         handleSaveNote={handleSaveNote}
