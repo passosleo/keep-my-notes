@@ -29,5 +29,5 @@ export const ContentWrapper = styled.section`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2em 0.8em;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 80px);
 `;

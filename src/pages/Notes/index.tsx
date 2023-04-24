@@ -18,7 +18,11 @@ export default function Notes() {
     handleDeleteNote,
     handleViewMode,
     viewMode,
+    search,
+    setSearch,
+    filteredNotes,
   } = useNotes();
+
   return (
     <>
       <ActionsWrapper>
@@ -29,7 +33,12 @@ export default function Notes() {
           rightIcon={<FiPlusCircle size={20} />}
           height="2rem"
         />
-        <input type="text" placeholder="Search" />
+        <input
+          type="text"
+          placeholder="Search"
+          value={search}
+          onChange={({ target }) => setSearch(target.value)}
+        />
         <CustomButton
           variant="solid"
           onClick={handleViewMode}
@@ -40,7 +49,7 @@ export default function Notes() {
       </ActionsWrapper>
 
       <NoteListWrapper viewMode={viewMode}>
-        {notes?.map((note: Note) => {
+        {(filteredNotes ?? notes)?.map((note: Note) => {
           return (
             <NoteCard
               note={note}

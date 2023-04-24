@@ -52,6 +52,7 @@ export const NoteCardWrapper = styled.div<IStyledProps>`
 export const NoteListWrapper = styled.div<IStyledProps>`
   display: grid;
   grid-template-columns: repeat(${({ viewMode }) => viewMode}, 1fr);
+  grid-auto-rows: min-content;
   gap: 1em;
   padding: 1em;
   overflow: auto;

@@ -22,6 +22,16 @@ export default function useNotes() {
 
   const [notes, setNotes] = useState<Note[]>(getNotes());
 
+  const [search, setSearch] = useState("");
+
+  const filteredNotes = notes.filter((note) => {
+    const { title, description } = note;
+    return (
+      title.toLowerCase().includes(search.toLowerCase()) ||
+      description?.toLowerCase().includes(search.toLowerCase())
+    );
+  });
+
   function handleViewMode() {
     const current = viewMode === 4 ? 1 : viewMode + 1;
     storeValue("viewMode", current);
@@ -88,5 +98,8 @@ export default function useNotes() {
     handleDeleteNote,
     handleViewMode,
     viewMode,
+    search,
+    setSearch,
+    filteredNotes,
   };
 }
