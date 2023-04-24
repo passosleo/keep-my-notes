@@ -17,18 +17,6 @@ export const Header = styled.section`
     align-items: center;
     justify-content: space-between;
 
-    input {
-      background: #f2f2f2;
-      border: none;
-      border-radius: 5px;
-      padding: 0.5em;
-      width: 25%;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
     img {
       border-radius: 50%;
       border: 2px solid #f2f2f2;
@@ -41,4 +29,5 @@ export const ContentWrapper = styled.section`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2em 0.8em;
+  height: calc(100vh - 140px);
 `;

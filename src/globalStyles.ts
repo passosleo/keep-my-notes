@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${({ theme }) => theme.fonts.primary}, Sans-Serif;
     color: ${({ theme }) => theme.colors.black};
+    overflow: hidden;
   }
 
   h1,h2,h3,h4,h5,h6 {

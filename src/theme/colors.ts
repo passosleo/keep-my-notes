@@ -4,6 +4,7 @@ interface ThemeColors {
   white: "#ffffff";
   black: "#222222";
   grey: "#999999";
+  lightGrey: "#f0f0f0";
 }
 
 export const colors: ThemeColors = {
@@ -12,4 +13,5 @@ export const colors: ThemeColors = {
   white: "#ffffff",
   black: "#222222",
   grey: "#999999",
+  lightGrey: "#f0f0f0",
 };

@@ -2,6 +2,7 @@ import { Note } from "./../../../types/index";
 import { useState } from "react";
 import useNotesService from "../../../services/notes";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { NoteColors } from "../../../static";
 
 export default function useNotes() {
   const { storeValue, getStoredValue } = useLocalStorage();
@@ -10,7 +11,7 @@ export default function useNotes() {
     id: "",
     title: "",
     description: "",
-    color: "",
+    color: NoteColors[0],
   });
   const [viewMode, setViewMode] = useState<number>(
     getStoredValue("viewMode") || 4
@@ -72,6 +73,7 @@ export default function useNotes() {
       id: "",
       title: "",
       description: "",
+      color: NoteColors[0],
     });
   }
 

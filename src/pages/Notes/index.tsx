@@ -1,9 +1,5 @@
 import CustomButton from "../../components/CustomButton";
-import {
-  AddButtonWrapper,
-  NoteListWrapper,
-  ViewModeButtonWrapper,
-} from "./styles";
+import { NoteListWrapper, ActionsWrapper } from "./styles";
 import { FiPlusCircle, FiGrid } from "react-icons/fi";
 import useNotes from "./hooks/useNotes";
 import NoteModal from "./components/Modal";
@@ -25,24 +21,23 @@ export default function Notes() {
   } = useNotes();
   return (
     <>
-      <AddButtonWrapper>
+      <ActionsWrapper>
         <CustomButton
           variant="solid"
-          title="Adicionar nota"
+          title="Add"
           onClick={handleModalOpen}
           rightIcon={<FiPlusCircle size={20} />}
-          width="13rem"
-          height="3rem"
+          height="2rem"
         />
-      </AddButtonWrapper>
-
-      <ViewModeButtonWrapper>
+        <input type="text" placeholder="Search" />
         <CustomButton
           variant="solid"
           onClick={handleViewMode}
+          width="2rem"
+          height="2rem"
           rightIcon={<FiGrid size={20} />}
         />
-      </ViewModeButtonWrapper>
+      </ActionsWrapper>
 
       <NoteListWrapper viewMode={viewMode}>
         {notes?.map((note: Note) => {

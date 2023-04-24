@@ -17,12 +17,12 @@ export default function NoteModal({
         isOpen={isModalOpen}
         onClose={() => handleModalOpen()}
         footer={true}
-        title={currentNote.id ? "Editar nota" : "Adicionar nota"}
+        title={currentNote.id ? "Edit note" : "Add note"}
         closable={true}
       >
         <CustomTextInput
-          label="Título"
-          placeholder="Insira um título"
+          label="Title"
+          placeholder="Enter a title"
           onChange={({ target }) => handleNoteForm({ target }, "title")}
           maxLength={25}
           width="280px"
@@ -30,9 +30,9 @@ export default function NoteModal({
           value={currentNote.title}
         />
         <CustomTextInput
-          label="Descrição"
+          label="Description"
           type="textarea"
-          placeholder="Insira uma descrição"
+          placeholder="Enter a description"
           onChange={({ target }) => handleNoteForm({ target }, "description")}
           size="medium"
           width="280px"
@@ -49,11 +49,7 @@ export default function NoteModal({
                   id={color}
                   value={color}
                   onChange={({ target }) => handleNoteForm({ target }, "color")}
-                  checked={
-                    currentNote.color
-                      ? currentNote.color === color
-                      : color === NoteColors[0]
-                  }
+                  checked={currentNote.color === color}
                   key={color}
                 />
               </NoteColorRadioInput>
