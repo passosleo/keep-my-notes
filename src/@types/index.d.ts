@@ -14,12 +14,12 @@ export type Note = {
   color?: string;
 };
 
-export type ProfileContextType = {
-  profile: Profile;
-  handleUpdateProfile: ({ name, photo }: Profile) => void;
-};
-
 export type Profile = {
   photo: string;
   name: string;
+};
+
+export type ProfileContextType = {
+  profile: Profile;
+  handleUpdateProfile: (profile: Profile) => void;
 };

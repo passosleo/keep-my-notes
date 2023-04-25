@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { Profile, ProfileContextType } from "../@types";
 import defaultPhoto from "../assets/images/default-photo.png";
