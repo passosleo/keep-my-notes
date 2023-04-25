@@ -1,8 +1,8 @@
-import NavBar from "./components/NavBar";
+import { NavBar } from "./components/NavBar";
 import { ContentWrapper } from "./styles";
 import { IProps } from "./types";
 
-function Layout({ children }: IProps) {
+export function Layout({ children }: IProps) {
   return (
     <>
       <NavBar />
@@ -10,5 +10,3 @@ function Layout({ children }: IProps) {
     </>
   );
 }
-
-export default Layout;

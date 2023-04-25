@@ -1,19 +1,17 @@
 import { BrowserRouter, Routes as Switch, Route } from "react-router-dom";
-import Notes from "../pages/Notes";
-import Profile from "../pages/Profile";
-import Layout from "../layout";
+import { NotesPage } from "../pages/Notes";
+import { ProfilePage } from "../pages/Profile";
+import { Layout } from "../layout";
 
-const Routes = () => {
+export const Routes = () => {
   return (
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route path="/" element={<Notes />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<NotesPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Switch>
       </Layout>
     </BrowserRouter>
   );
 };
-
-export default Routes;

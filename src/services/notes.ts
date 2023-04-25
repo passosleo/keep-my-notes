@@ -1,8 +1,8 @@
 import { Note } from "../@types";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { v4 as uuidv4 } from "uuid";
 
-export default function useNotesService() {
+export function useNotesService() {
   const { storeValue, getStoredValue } = useLocalStorage();
 
   function saveNote(note: Note) {

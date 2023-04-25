@@ -1,10 +1,10 @@
-import CustomModal from "../../../../components/CustomModal";
-import CustomTextInput from "../../../../components/CustomTextInput";
+import { CustomModal } from "../../../../components/CustomModal";
+import { CustomTextInput } from "../../../../components/CustomTextInput";
 import { NoteColors } from "../../../../static";
 import { ColorsWrapper, NoteColorRadioInput } from "../../styles";
 import { INotesModalProps } from "../../types";
 
-export default function NoteModal({
+export function NoteModal({
   handleSaveNote,
   handleNoteForm,
   handleModalOpen,

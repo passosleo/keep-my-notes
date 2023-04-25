@@ -1,7 +1,7 @@
 import { InputWrapper } from "./styles";
 import { IProps } from "./types";
 
-export default function CustomTextInput({
+export function CustomTextInput({
   value,
   label,
   type = "text",

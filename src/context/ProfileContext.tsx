@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { Profile, ProfileContextType } from "../@types";
 import defaultPhoto from "../assets/images/default-photo.png";
 
@@ -8,13 +8,15 @@ const ProfileContext = createContext({} as ProfileContextType);
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const { getStoredValue, storeValue } = useLocalStorage();
 
-  const storedProfile = getStoredValue("profile");
+  const storedProfile: Profile = getStoredValue("profile");
+
+  const defaultProfile: Profile = {
+    name: "Anonymous",
+    photo: defaultPhoto,
+  };
 
   const [profile, setProfile] = useState<Profile>(
-    storedProfile ?? {
-      name: "Anonymous",
-      photo: defaultPhoto,
-    }
+    storedProfile ?? defaultProfile
   );
 
   function handleUpdateProfile(profile: Profile) {

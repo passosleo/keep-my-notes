@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../../components/CustomButton";
-import CustomTextInput from "../../components/CustomTextInput";
+import { CustomButton } from "../../components/CustomButton";
+import { CustomTextInput } from "../../components/CustomTextInput";
 import { useProfileForm } from "./hooks/useProfileForm";
 import { ProfileWrapper, ButtonsWrapper } from "./styles";
 
-export default function ProfilePage() {
+export function ProfilePage() {
   const { profile, setProfile, handleUpdateProfile, handleUploadPhoto } =
     useProfileForm();
   const navigate = useNavigate();

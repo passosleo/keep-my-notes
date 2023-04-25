@@ -2,7 +2,7 @@ import { NoteCardWrapper, ActionButton } from "../../styles";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { INoteCardProps } from "../../types";
 
-export default function NoteCard({
+export function NoteCard({
   note,
   handleEditNote,
   handleDeleteNote,

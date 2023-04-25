@@ -1,10 +1,10 @@
 import { useState } from "react";
-import useNotesService from "../../../services/notes";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useNotesService } from "../../../services/notes";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { NoteColors } from "../../../static";
 import { Note } from "../../../@types";
 
-export default function useNotes() {
+export function useNotes() {
   const { storeValue, getStoredValue } = useLocalStorage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentNote, setCurrentNote] = useState<Note>({

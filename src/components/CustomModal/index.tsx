@@ -1,4 +1,4 @@
-import CustomButton from "../CustomButton";
+import { CustomButton } from "../CustomButton";
 import {
   ModalOverlay,
   ModalWrapper,
@@ -12,7 +12,7 @@ import {
 import { IProps } from "./types";
 import { IoClose } from "react-icons/io5";
 
-export default function CustomModal({
+export function CustomModal({
   isOpen = false,
   children,
   onClose,

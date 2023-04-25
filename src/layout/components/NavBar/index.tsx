@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Header, DropdownWrapper } from "../../styles";
 import { useProfileContext } from "../../../context/ProfileContext";
 
-function NavBar() {
+export function NavBar() {
   const { profile } = useProfileContext();
   return (
     <Header>
@@ -26,5 +26,3 @@ function NavBar() {
     </Header>
   );
 }
-
-export default NavBar;

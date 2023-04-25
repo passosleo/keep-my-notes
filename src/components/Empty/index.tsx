@@ -1,7 +1,7 @@
 import { EmptyWrapper } from "./styles";
 import { IProps } from "./types";
 
-export default function Empty({ extra, icon, defaultMessage }: IProps) {
+export function Empty({ extra, icon, defaultMessage }: IProps) {
   return (
     <EmptyWrapper>
       {icon}

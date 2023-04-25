@@ -1,15 +1,15 @@
-import CustomButton from "../../components/CustomButton";
+import { CustomButton } from "../../components/CustomButton";
 import { NoteListWrapper, ActionsWrapper } from "./styles";
 import { FiPlusCircle, FiGrid } from "react-icons/fi";
-import useNotes from "./hooks/useNotes";
-import NoteModal from "./components/Modal";
-import NoteCard from "./components/Card";
-import Empty from "../../components/Empty";
+import { useNotes } from "./hooks/useNotes";
+import { NoteModal } from "./components/Modal";
+import { NoteCard } from "./components/Card";
+import { Empty } from "../../components/Empty";
 import { theme } from "../../theme";
 import { BsInbox } from "react-icons/bs";
 import { Note } from "../../@types";
 
-export default function NotesPage() {
+export function NotesPage() {
   const {
     handleModalOpen,
     handleSaveNote,

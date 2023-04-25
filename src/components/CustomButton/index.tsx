@@ -1,7 +1,7 @@
 import { ButtonWrapper } from "./styles";
 import { IProps } from "./types";
 
-export default function CustomButton({
+export function CustomButton({
   title,
   type = "button",
   onClick,
