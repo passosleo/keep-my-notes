@@ -36,8 +36,13 @@ export const ContentWrapper = styled.section`
 export const DropdownWrapper = styled.div`
   position: relative;
   display: inline-block;
+  cursor: pointer;
 
-  div {
+  p {
+    margin-right: 1rem;
+  }
+
+  div:last-child {
     display: none;
     position: absolute;
     color: ${({ theme }) => theme.colors.grey};
@@ -54,7 +59,7 @@ export const DropdownWrapper = styled.div`
     }
   }
 
-  &:hover div {
+  &:hover div:last-child {
     display: block;
   }
 `;

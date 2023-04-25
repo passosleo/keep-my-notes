@@ -9,7 +9,7 @@ import { theme } from "../../theme";
 import { BsInbox } from "react-icons/bs";
 import { Note } from "../../@types";
 
-export default function Notes() {
+export default function NotesPage() {
   const {
     handleModalOpen,
     handleSaveNote,

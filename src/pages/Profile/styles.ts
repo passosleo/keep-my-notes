@@ -18,3 +18,10 @@ export const ProfileWrapper = styled.div`
     background: #f2f2f2;
   }
 `;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+`;
