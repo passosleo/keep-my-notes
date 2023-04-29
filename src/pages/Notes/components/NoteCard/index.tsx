@@ -1,13 +1,12 @@
 import { NoteCardWrapper, ActionButton, NoteDateWrapper } from "../../styles";
 import { BiEdit, BiTrash } from "react-icons/bi";
-import { FaUserEdit } from "react-icons/fa";
 import { INoteCardProps } from "../../types";
 import moment from "moment";
 
 export function NoteCard({
   note,
   handleEditNote,
-  handleDeleteNote,
+  onDeleteNote,
 }: INoteCardProps) {
   const { id, title, description, color, updatedAt } = note;
   const updated = moment(updatedAt);
@@ -24,7 +23,7 @@ export function NoteCard({
           <BiTrash
             style={ActionButton}
             size={22}
-            onClick={() => handleDeleteNote(id)}
+            onClick={() => onDeleteNote(id)}
           />
         </div>
       </div>

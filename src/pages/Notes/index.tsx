@@ -2,36 +2,48 @@ import { CustomButton } from "../../components/CustomButton";
 import { NoteListWrapper, ActionsWrapper } from "./styles";
 import { FiPlusCircle, FiGrid } from "react-icons/fi";
 import { useNotes } from "./hooks/useNotes";
-import { NoteModal } from "./components/Modal";
-import { NoteCard } from "./components/Card";
+import { NoteModal } from "./components/NoteModal";
+import { NoteCard } from "./components/NoteCard";
 import { Empty } from "../../components/Empty";
 import { theme } from "../../theme";
 import { BsInbox } from "react-icons/bs";
 import { Note } from "../../@types";
+import { useCustomModal } from "../../components/CustomModal/hooks/useCustomModal";
+import { ConfirmModal } from "./components/ConfirmModal";
 
 export function NotesPage() {
+  const { isModalOpen: isNoteModalOpen, handleModalOpen: handleNoteModalOpen } =
+    useCustomModal();
+
   const {
-    handleModalOpen,
+    isModalOpen: isConfirmModalOpen,
+    handleModalOpen: handleConfirmModalOpen,
+    modalProps: confirmModalProps,
+  } = useCustomModal();
+
+  const {
     handleSaveNote,
     handleNoteForm,
-    isModalOpen,
-    currentNote,
     handleEditNote,
+    handleAddNote,
     handleDeleteNote,
+    currentNote,
     handleViewMode,
     viewMode,
     search,
     setSearch,
-    filteredNotes,
-  } = useNotes();
-  const hasNotes = filteredNotes.length > 0;
+    notes,
+    onDeleteNote,
+  } = useNotes({ handleNoteModalOpen, handleConfirmModalOpen });
+
+  const hasNotes = notes.length > 0;
   return (
     <>
       <ActionsWrapper>
         <CustomButton
           variant="solid"
           title="Add"
-          onClick={handleModalOpen}
+          onClick={handleAddNote}
           rightIcon={<FiPlusCircle size={20} />}
           height="2rem"
         />
@@ -58,12 +70,12 @@ export function NotesPage() {
         />
       ) : (
         <NoteListWrapper viewMode={viewMode}>
-          {filteredNotes.map((note: Note) => (
+          {notes.map((note: Note) => (
             <NoteCard
               note={note}
               key={note.id}
               handleEditNote={handleEditNote}
-              handleDeleteNote={handleDeleteNote}
+              onDeleteNote={onDeleteNote}
             />
           ))}
         </NoteListWrapper>
@@ -72,9 +84,15 @@ export function NotesPage() {
       <NoteModal
         handleSaveNote={handleSaveNote}
         handleNoteForm={handleNoteForm}
-        handleModalOpen={handleModalOpen}
-        isModalOpen={isModalOpen}
+        handleModalOpen={handleNoteModalOpen}
+        isModalOpen={isNoteModalOpen}
         currentNote={currentNote}
+      />
+
+      <ConfirmModal
+        isModalOpen={isConfirmModalOpen}
+        handleModalOpen={handleConfirmModalOpen}
+        onConfirm={() => handleDeleteNote(confirmModalProps.id)}
       />
     </>
   );

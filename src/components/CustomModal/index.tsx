@@ -20,6 +20,8 @@ export function CustomModal({
   closable = true,
   title,
   footer,
+  confirmText = "Save",
+  cancelText = "Cancel",
 }: IProps) {
   return (
     <>
@@ -41,13 +43,13 @@ export function CustomModal({
             <ModalFooter>
               {closable && (
                 <CustomButton
-                  title="Cancel"
+                  title={cancelText}
                   variant="outline"
                   onClick={onClose}
                 />
               )}
               <CustomButton
-                title="Save"
+                title={confirmText}
                 variant="solid"
                 type="submit"
                 onClick={onConfirm}

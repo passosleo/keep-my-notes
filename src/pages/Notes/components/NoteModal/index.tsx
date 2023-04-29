@@ -2,7 +2,7 @@ import { CustomModal } from "../../../../components/CustomModal";
 import { CustomTextInput } from "../../../../components/CustomTextInput";
 import { NoteColors } from "../../../../static";
 import { ColorsWrapper, NoteColorRadioInput } from "../../styles";
-import { INotesModalProps } from "../../types";
+import { INoteModalProps } from "../../types";
 
 export function NoteModal({
   handleSaveNote,
@@ -10,7 +10,7 @@ export function NoteModal({
   handleModalOpen,
   isModalOpen,
   currentNote,
-}: INotesModalProps) {
+}: INoteModalProps) {
   return (
     <form onSubmit={(e) => handleSaveNote(e)}>
       <CustomModal

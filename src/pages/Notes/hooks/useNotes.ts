@@ -3,10 +3,13 @@ import { useNotesService } from "../../../services/notes";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { NoteColors } from "../../../static";
 import { Note } from "../../../@types";
+import { IUseNotesProps } from "../types";
 
-export function useNotes() {
+export function useNotes({
+  handleNoteModalOpen,
+  handleConfirmModalOpen,
+}: IUseNotesProps) {
   const { storeValue, getStoredValue } = useLocalStorage();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentNote, setCurrentNote] = useState<Note>({
     id: "",
     title: "",
@@ -43,11 +46,9 @@ export function useNotes() {
     setNotes(getNotes());
   }
 
-  function handleModalOpen() {
-    setIsModalOpen(!isModalOpen);
-    if (isModalOpen) {
-      clearForm();
-    }
+  function handleAddNote() {
+    handleNoteModalOpen();
+    clearForm();
   }
 
   function handleNoteForm({ target }: any, field: string) {
@@ -65,13 +66,17 @@ export function useNotes() {
     } else {
       saveNote(currentNote);
     }
-    handleModalOpen();
+    handleNoteModalOpen();
     refreshNotes();
   }
 
   function handleEditNote(id: string) {
     setCurrentNote(getNoteById(id));
-    handleModalOpen();
+    handleNoteModalOpen();
+  }
+
+  function onDeleteNote(id: string) {
+    handleConfirmModalOpen({ id });
   }
 
   function handleDeleteNote(id: string) {
@@ -90,18 +95,17 @@ export function useNotes() {
   }
 
   return {
-    isModalOpen,
+    handleAddNote,
     handleNoteForm,
     handleSaveNote,
-    notes,
-    handleModalOpen,
-    currentNote,
     handleEditNote,
     handleDeleteNote,
     handleViewMode,
+    onDeleteNote,
     viewMode,
     search,
     setSearch,
-    filteredNotes,
+    notes: filteredNotes,
+    currentNote,
   };
 }
