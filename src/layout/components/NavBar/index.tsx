@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Header, DropdownWrapper } from "../../styles";
+import { Header, DropdownWrapper, LogoWrapper } from "../../styles";
 import { useProfileContext } from "../../../context/ProfileContext";
+import { MdOutlineStickyNote2 } from "react-icons/md";
 
 export function NavBar() {
   const { profile } = useProfileContext();
@@ -8,7 +9,10 @@ export function NavBar() {
     <Header>
       <div>
         <Link to="/">
-          <h1>Web Notes</h1>
+          <LogoWrapper>
+            <MdOutlineStickyNote2 size={32} />
+            <h1>Keep My Notes</h1>
+          </LogoWrapper>
         </Link>
         <DropdownWrapper>
           <div>

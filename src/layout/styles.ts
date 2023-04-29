@@ -38,8 +38,11 @@ export const DropdownWrapper = styled.div`
   display: inline-block;
   cursor: pointer;
 
-  p {
-    margin-right: 1rem;
+  div:first-child {
+    p:first-child {
+      font-weight: 600;
+      margin-right: 1rem;
+    }
   }
 
   div:last-child {
@@ -62,4 +65,12 @@ export const DropdownWrapper = styled.div`
   &:hover div:last-child {
     display: block;
   }
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
 `;
