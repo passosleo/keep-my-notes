@@ -24,7 +24,7 @@ export function NoteModal({
           label="Title"
           placeholder="Enter a title"
           onChange={({ target }) => handleNoteForm({ target }, "title")}
-          maxLength={25}
+          maxLength={50}
           width="280px"
           required
           value={currentNote.title}

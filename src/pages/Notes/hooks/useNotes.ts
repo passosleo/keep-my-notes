@@ -18,7 +18,7 @@ export function useNotes({
     updatedAt: "",
   });
   const [viewMode, setViewMode] = useState<number>(
-    getStoredValue("viewMode") || 4
+    getStoredValue("viewMode") || 3
   );
 
   const { saveNote, updateNoteById, deleteNoteById, getNoteById, getNotes } =
@@ -37,7 +37,7 @@ export function useNotes({
   });
 
   function handleViewMode() {
-    const current = viewMode === 4 ? 1 : viewMode + 1;
+    const current = viewMode === 3 ? 1 : viewMode + 1;
     storeValue("viewMode", current);
     setViewMode(current);
   }

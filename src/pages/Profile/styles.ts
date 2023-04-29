@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProfileWrapper = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -24,4 +24,23 @@ export const ButtonsWrapper = styled.div`
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
+`;
+
+export const FileInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    display: none;
+  }
+
+  label {
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    color: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.blue};
+  }
 `;

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CustomButton } from "../../components/CustomButton";
 import { CustomTextInput } from "../../components/CustomTextInput";
 import { useProfileForm } from "./hooks/useProfileForm";
-import { ProfileWrapper, ButtonsWrapper } from "./styles";
+import { ProfileWrapper, ButtonsWrapper, FileInputWrapper } from "./styles";
 
 export function ProfilePage() {
   const { profile, setProfile, handleUpdateProfile, handleUploadPhoto } =
@@ -20,11 +20,16 @@ export function ProfilePage() {
         width="100"
         height="100"
       />
-      <input
-        type="file"
-        title="Change photo"
-        onChange={({ target }) => handleUploadPhoto(target)}
-      />
+      <FileInputWrapper>
+        <label htmlFor="file-input">Upload</label>
+        <input
+          id="file-input"
+          name="file-input"
+          type="file"
+          title="Change photo"
+          onChange={({ target }) => handleUploadPhoto(target)}
+        />
+      </FileInputWrapper>
       <CustomTextInput
         label="Name"
         value={profile.name}
@@ -37,10 +42,12 @@ export function ProfilePage() {
         <CustomButton
           variant="outline"
           title="Cancel"
+          width="6rem"
           onClick={() => navigate("/")}
         />
         <CustomButton
           title="Save"
+          width="6rem"
           onClick={() => {
             handleUpdateProfile(profile);
             navigate("/");
