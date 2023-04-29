@@ -24,6 +24,7 @@ export function NotesPage() {
     setSearch,
     filteredNotes,
   } = useNotes();
+  const hasNotes = filteredNotes.length > 0;
   return (
     <>
       <ActionsWrapper>
@@ -49,7 +50,7 @@ export function NotesPage() {
         />
       </ActionsWrapper>
 
-      {filteredNotes.length === 0 ? (
+      {!hasNotes ? (
         <Empty
           defaultMessage="No notes yet"
           icon={<BsInbox size={80} color={theme.colors.lightGrey} />}
@@ -57,16 +58,14 @@ export function NotesPage() {
         />
       ) : (
         <NoteListWrapper viewMode={viewMode}>
-          {filteredNotes.map((note: Note) => {
-            return (
-              <NoteCard
-                note={note}
-                key={note.id}
-                handleEditNote={handleEditNote}
-                handleDeleteNote={handleDeleteNote}
-              />
-            );
-          })}
+          {filteredNotes.map((note: Note) => (
+            <NoteCard
+              note={note}
+              key={note.id}
+              handleEditNote={handleEditNote}
+              handleDeleteNote={handleDeleteNote}
+            />
+          ))}
         </NoteListWrapper>
       )}
 

@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-
+  
   button { 
     font-family: ${({ theme }) => theme.fonts.primary}, Sans-Serif;
   }

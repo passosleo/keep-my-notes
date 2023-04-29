@@ -1,13 +1,16 @@
-import { NoteCardWrapper, ActionButton } from "../../styles";
+import { NoteCardWrapper, ActionButton, NoteDateWrapper } from "../../styles";
 import { BiEdit, BiTrash } from "react-icons/bi";
+import { FaUserEdit } from "react-icons/fa";
 import { INoteCardProps } from "../../types";
+import moment from "moment";
 
 export function NoteCard({
   note,
   handleEditNote,
   handleDeleteNote,
 }: INoteCardProps) {
-  const { id, title, description, color } = note;
+  const { id, title, description, color, updatedAt } = note;
+  const updated = moment(updatedAt);
   return (
     <NoteCardWrapper noteColor={color}>
       <div>
@@ -25,8 +28,12 @@ export function NoteCard({
           />
         </div>
       </div>
-
       <p>{description}</p>
+      <NoteDateWrapper>
+        <p>{`updated on ${updated.format("DD.MM.YY")} at ${updated.format(
+          "HH:mm"
+        )}`}</p>
+      </NoteDateWrapper>
     </NoteCardWrapper>
   );
 }

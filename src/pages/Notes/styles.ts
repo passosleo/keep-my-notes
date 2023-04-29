@@ -28,7 +28,7 @@ export const NoteCardWrapper = styled.div<IStyledProps>`
   height: fit-content;
   word-break: break-all;
 
-  div {
+  div: first-child {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -46,6 +46,20 @@ export const NoteCardWrapper = styled.div<IStyledProps>`
     font-weight: 400;
     margin: 0;
     margin-bottom: 0.5em;
+  }
+`;
+
+export const NoteDateWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.6em;
+  margin-top: 1.2em;
+  color: ${({ theme }) => theme.colors.darkGrey};
+
+  p {
+    margin: 0;
+    margin-left: 0.5em;
   }
 `;
 

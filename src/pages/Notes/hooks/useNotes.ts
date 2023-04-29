@@ -12,6 +12,7 @@ export function useNotes() {
     title: "",
     description: "",
     color: NoteColors[0],
+    updatedAt: "",
   });
   const [viewMode, setViewMode] = useState<number>(
     getStoredValue("viewMode") || 4
@@ -57,7 +58,7 @@ export function useNotes() {
     });
   }
 
-  function handleSaveNote(e: any) {
+  function handleSaveNote(e: FormDataEvent) {
     e.preventDefault();
     if (currentNote.id) {
       updateNoteById(currentNote.id, currentNote);
@@ -84,6 +85,7 @@ export function useNotes() {
       title: "",
       description: "",
       color: NoteColors[0],
+      updatedAt: "",
     });
   }
 

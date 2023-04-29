@@ -39,21 +39,19 @@ export function NoteModal({
           value={currentNote.description}
         />
         <ColorsWrapper>
-          {NoteColors.map((color, index) => {
-            return (
-              <NoteColorRadioInput key={color} noteColor={color}>
-                <label htmlFor={color} />
-                <input
-                  type="radio"
-                  name="color"
-                  id={color}
-                  value={color}
-                  onChange={({ target }) => handleNoteForm({ target }, "color")}
-                  checked={currentNote.color === color}
-                />
-              </NoteColorRadioInput>
-            );
-          })}
+          {NoteColors.map((color) => (
+            <NoteColorRadioInput key={color} noteColor={color}>
+              <label htmlFor={color} />
+              <input
+                type="radio"
+                name="color"
+                id={color}
+                value={color}
+                onChange={({ target }) => handleNoteForm({ target }, "color")}
+                checked={currentNote.color === color}
+              />
+            </NoteColorRadioInput>
+          ))}
         </ColorsWrapper>
       </CustomModal>
     </form>

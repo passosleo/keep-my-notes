@@ -7,12 +7,16 @@ export function useNotesService() {
 
   function saveNote(note: Note) {
     const id = uuidv4();
+    const updatedAt = new Date().toISOString();
     const previousNotes = getStoredValue("notes", []);
-    storeValue("notes", [...previousNotes, { ...note, id }]);
+    storeValue("notes", [...previousNotes, { ...note, id, updatedAt }]);
   }
 
   function getNotes() {
-    return getStoredValue("notes", []) as Note[];
+    const notes: Note[] = getStoredValue("notes", []);
+    return notes.sort((a: Note, b: Note) => {
+      return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+    });
   }
 
   function getNoteById(id: string) {
@@ -23,7 +27,11 @@ export function useNotesService() {
   function updateNoteById(id: string, note: Note) {
     const notes = getNotes();
     const noteIndex = notes.findIndex((note: Note) => note.id === id);
-    notes[noteIndex] = note;
+    const updatedAt = new Date().toISOString();
+    notes[noteIndex] = {
+      ...note,
+      updatedAt,
+    };
     storeValue("notes", notes);
   }
 
