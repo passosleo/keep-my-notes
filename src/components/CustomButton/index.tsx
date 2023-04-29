@@ -21,7 +21,13 @@ export function CustomButton({
       fontSize={fontSize}
       disabled={disabled}
     >
-      <button type={type} onClick={onClick} disabled={disabled}>
+      <button
+        id={title ?? "button"}
+        aria-label={title ?? "button"}
+        type={type}
+        onClick={onClick}
+        disabled={disabled}
+      >
         {leftIcon && <span>{leftIcon}</span>}
         {title && <p>{title}</p>}
         {rightIcon && <span>{rightIcon}</span>}

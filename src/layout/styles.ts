@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Header = styled.section`
-  background: #5b8fb9;
+  background: ${({ theme }) => theme.colors.blue}};
   padding: 0.5em 0.8em;
   z-index: 1;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  color: #f2f2f2;
+  color: ${({ theme }) => theme.colors.white}};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ export const Header = styled.section`
       cursor: pointer;
       border-radius: 50%;
       border: 2px solid #f2f2f2;
-      background: #f2f2f2;
+      background: ${({ theme }) => theme.colors.white}};
     }
   }
 `;

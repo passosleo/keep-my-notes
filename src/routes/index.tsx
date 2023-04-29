@@ -5,13 +5,9 @@ import { Layout } from "../layout";
 
 export const Routes = () => {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Switch>
-          <Route path="/" element={<NotesPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        </Switch>
-      </Layout>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/" element={<NotesPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+    </Switch>
   );
 };

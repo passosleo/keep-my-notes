@@ -1,15 +1,15 @@
-import { CustomButton } from "../../components/CustomButton";
 import { NoteListWrapper, ActionsWrapper } from "./styles";
+import { theme } from "../../theme";
 import { FiPlusCircle, FiGrid } from "react-icons/fi";
-import { useNotes } from "./hooks/useNotes";
+import { BsInbox } from "react-icons/bs";
+import { CustomButton } from "../../components/CustomButton";
 import { NoteModal } from "./components/NoteModal";
 import { NoteCard } from "./components/NoteCard";
 import { Empty } from "../../components/Empty";
-import { theme } from "../../theme";
-import { BsInbox } from "react-icons/bs";
-import { Note } from "../../@types";
-import { useCustomModal } from "../../components/CustomModal/hooks/useCustomModal";
 import { ConfirmModal } from "./components/ConfirmModal";
+import { useCustomModal } from "../../components/CustomModal/hooks/useCustomModal";
+import { useNotes } from "./hooks/useNotes";
+import { Note } from "../../@types";
 
 export function NotesPage() {
   const { isModalOpen: isNoteModalOpen, handleModalOpen: handleNoteModalOpen } =
